@@ -1,0 +1,75 @@
+1 -printf va ecrire char par char de la chaine en parametres jusqua ce quelle trouve un %
+
+2 si un % est trouver, check %+1 qui sera le type du premier argument de la variable
+
+3 - selon ce quil y a apres le %, different type de conversion
+
+4 - une fois ecrit on avance dans le chaine en parametre et on ecrit encore jusqua trouver un autre % ou que la chaine soit terminee '\0'
+
+5 - printf return le nombre total de char affiches.
+
+
+---
+int printf = return len de la string en parametre
+- a besoin de va_list arguments;
+- a besoin de len, la valeur a return;
+
+on va_start pour initialiser la listes darguments
+
+len = fonction qui va executer tout le reste :
+- la lecture/parsing de la string qui ira faire les conversion en fonction des types de formats reconnus (cette fonction prendra en parametre la string et les args);
+
+on va_end la lecture de la liste des arguments lorsque lon est au bout de la string format
+
+on return len (return value de printf)
+---
+
+
+---
+fonction de print de format :
+prend la string en param et la structure va_list
+
+cette fonction parcours la chaine de format et traite les differents type de conversion rencontres, si un % est rencontre :
+- on check % + 1 avec strchr et la liste des paranetres que lont veut check
+-- si on en trouve un on donne a une autre fonction la position et la struct qui identifiera larg et le traitera
+- sinon si on a eu 2 %% daffiler on affiche %
+sinon on affiche le charactere normalement
+la fonction return len pour ft_printf.
+---
+
+
+---
+strchr : classique, au choix reprendre celle de la lib ou en faire une custom.
+---
+
+
+---
+fonction didentification de format, elle prend en parametre le type a convertir (convert), et la struc arguments :
+dans cette fonction on declare un counteur qui sera return et est le nombre de char afficher sur la stdout
+
+les types que je dois gerer avec les values que jenvoie a chaque fonction de conversion en utilisant va_arg(arguments, type);
+
+'c' == int; == putchar (omg)
+'p' == void * == ptr conversion (voir print memory)
+'s' == char * == putstr classique
+'d' ou 'i' == int = base 10 conversion
+'u' == unsigned int : unsigned int conversion
+'x' == unsigned int : puthexa lowercase
+'X' == unsigned int : puthexa uppercase
+
+par exemple :
+
+if (convert == 'c')
+	counteur += putchar(va_arg(arguments, int));
+---
+
+---
+CHAQUE FONCTION DE CONVERTION ECRIT ET RETURN UN COUNTEUR DE NOMBRES DE CHAR PRINT SUR LA STDOUT
+en gros : count += write();
+			return (count);
+
+
+un cas particulier a gerer : si %s, NULL on doit ecrire '(null)'
+
+CHECK AVEC VRAI FONCTION printf
+
