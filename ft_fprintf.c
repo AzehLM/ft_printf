@@ -6,7 +6,7 @@ int	ft_printf(const char *format, ...)
 	int	len;
 
 	va_start(args, format);
-	len = ft_convert(format, args);
+	len = ft_parse(format, args);
 	va_end(args);
 	return (len);
 }
