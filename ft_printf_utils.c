@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:39:48 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/16 18:13:21 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/16 20:32:45 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_putnbr(int n)
 	long	nb;
 	int		i;
 
-	ten_power = 10;
+	ten_power = 1;
 	nb = n;
 	i = 0;
 	if (nb < 0)

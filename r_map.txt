@@ -123,3 +123,11 @@ TEST AND EXEMPLES FOR BONUS PART :
     printf("Positif sans espace: %d\n", 42);     // Affiche: 42
     printf("Négatif avec espace: % d\n", -42);   // Affiche: -42
     printf("Négatif sans espace: %d\n", -42);    // Affiche: -42
+
+
+%p : LONG_MIN ; LONG_MAX ; ULONG_MAX ; -ULONG_MAX
+
+%d : 0 ; -1 ; 1 ; 9 ; -9 ; LONG_MAX ; LONG_MIN ; UINT_MAX ; ULONG_MAX ; LLONG_MAX
+%d : INT_MAX ; INT_MIN ; LONG_MAX ; LONG_MIN ; 0 ; -42 ;
+
+%i : 0 ; -1 

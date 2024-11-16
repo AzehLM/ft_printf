@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:15:18 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/16 18:31:10 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/16 21:13:39 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ static int	ft_parse(const char *format, va_list args)
 				len += ft_convert_args(format[i], args);
 			else if (format[i] == '%')
 				len += ft_putchar('%');
-			else
-				return (-1);
 		}
 		else
 			len += ft_putchar(format[i]);

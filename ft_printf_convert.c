@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:22:21 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/16 18:42:55 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/16 20:53:45 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_unsigned_decimal(unsigned int n)
 	unsigned int	nb;
 	int				i;
 
-	ten_power = 10;
+	ten_power = 1;
 	nb = n;
 	i = 0;
 	while (nb / (ten_power * 10) != 0)
