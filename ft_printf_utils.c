@@ -6,11 +6,11 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:39:48 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/16 20:32:45 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/16 22:07:10 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <unistd.h>
 
 char	*ft_strchr(const char *s, int c)
 {

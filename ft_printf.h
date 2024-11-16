@@ -6,18 +6,12 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 07:34:07 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/16 21:20:05 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/16 22:09:17 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
-# include <stdlib.h>
-# include <stdint.h>
-# include <stdarg.h>
-# include <stdio.h>
-# include <unistd.h>
 
 char	*ft_strchr(const char *s, int c);
 

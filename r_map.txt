@@ -130,4 +130,4 @@ TEST AND EXEMPLES FOR BONUS PART :
 %d : 0 ; -1 ; 1 ; 9 ; -9 ; LONG_MAX ; LONG_MIN ; UINT_MAX ; ULONG_MAX ; LLONG_MAX
 %d : INT_MAX ; INT_MIN ; LONG_MAX ; LONG_MIN ; 0 ; -42 ;
 
-%i : 0 ; -1 
+%i : 0 ; -1

@@ -6,11 +6,12 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:22:21 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/16 20:53:45 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/16 22:09:28 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <unistd.h>
 
 int	ft_puthexa_lowercase(unsigned int n)
 {
