@@ -29,9 +29,16 @@ on return len (return value de printf)
 fonction de print de format :
 prend la string en param et la structure va_list
 
-cette fonction parcours la chaine de format et traite les differents type de conversion rencontres, si un % est rencontre :
-- on check % + 1 avec strchr et la liste des paranetres que lont veut check
--- si on en trouve un on donne a une autre fonction la position et la struct qui identifiera larg et le traitera
+cette fonction parcours la chaine de format 
+et traite les differents type de conversion rencontres, 
+si un % est rencontre :
+- on check % + 1 avec strchr et la liste des 
+parametres que lont veut check
+
+-- si on en trouve un on donne a une autre 
+fonction la position et la struct qui identifiera 
+largument et le traitera (ft_convert_args)
+
 - sinon si on a eu 2 %% daffiler on affiche %
 sinon on affiche le charactere normalement
 la fonction return len pour ft_printf.
@@ -44,12 +51,16 @@ strchr : classique, au choix reprendre celle de la lib ou en faire une custom.
 
 
 ---
-fonction didentification de format, elle prend en parametre le type a convertir (convert), et la struc arguments :
-dans cette fonction on declare un counteur qui sera return et est le nombre de char afficher sur la stdout
+fonction didentification de format, elle prend en parametre 
+le type a convertir (convert), et la struc arguments :
+dans cette fonction on declare un counteur qui 
+sera return et est le nombre de char afficher sur la stdout
 
-les types que je dois gerer avec les values que jenvoie a chaque fonction de conversion en utilisant va_arg(arguments, type);
+les types que je dois gerer avec les values 
+que jenvoie a chaque fonction de conversion 
+en utilisant va_arg(arguments, type);
 
-'c' == int; == putchar (omg)
+'c' == int; == putchar 
 'p' == void * == ptr conversion (voir print memory)
 's' == char * == putstr classique
 'd' ou 'i' == int = base 10 conversion
@@ -68,8 +79,47 @@ CHAQUE FONCTION DE CONVERTION ECRIT ET RETURN UN COUNTEUR DE NOMBRES DE CHAR PRI
 en gros : count += write();
 			return (count);
 
-
 un cas particulier a gerer : si %s, NULL on doit ecrire '(null)'
 
 CHECK AVEC VRAI FONCTION printf
 
+GESTION DERREUR ?
+
+pour string null return '(null)'
+pour pointeur nill return '(nill)';
+
+return -1 ; 
+
+RETURN printf:
+
+TEST FOR %c : int a = 'a' : a || char b = 'a' : a 
+TEST FOR %s : string
+TEST FOR %p : 0x7ffccdb9d468
+TEST FOR %d : 42
+TEST FOR %i : 24
+TEST FOR %u : 4294967295
+TEST FOR %x : ff
+TEST FOR %X : FF
+
+
+
+TEST AND EXEMPLES FOR BONUS PART :
+
+
+// Le flag '#' force l'affichage du préfixe 0x pour hexa, 0 pour octal
+    printf("Hexadécimal avec #: %#x\n", 255);    // Affiche: 0xff
+    printf("Hexadécimal sans #: %x\n", 255);     // Affiche: ff
+    printf("Octal avec #: %#o\n", 255);          // Affiche: 0377
+    printf("Octal sans #: %o\n", 255);           // Affiche: 377
+
+    // Le flag '+' force l'affichage du signe pour les nombres positifs
+    printf("Positif avec +: %+d\n", 42);         // Affiche: +42
+    printf("Positif sans +: %d\n", 42);          // Affiche: 42
+    printf("Négatif avec +: %+d\n", -42);        // Affiche: -42
+    printf("Négatif sans +: %d\n", -42);         // Affiche: -42
+
+    // Le flag espace ajoute un espace avant les nombres positifs
+    printf("Positif avec espace: % d\n", 42);    // Affiche:  42
+    printf("Positif sans espace: %d\n", 42);     // Affiche: 42
+    printf("Négatif avec espace: % d\n", -42);   // Affiche: -42
+    printf("Négatif sans espace: %d\n", -42);    // Affiche: -42
