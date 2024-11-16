@@ -6,14 +6,12 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:15:18 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/16 16:50:59 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:31:10 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdarg.h>
-
-#include <stdio.h>
 
 static int	ft_convert_args(int convert, va_list args)
 {
@@ -24,6 +22,8 @@ static int	ft_convert_args(int convert, va_list args)
 		len += ft_putchar(va_arg(args, int));
 	else if (convert == 's')
 		len += ft_putstr(va_arg(args, char *));
+	else if (convert == 'p')
+		len += ft_ptrhexa(va_arg(args, void *));
 	else if (convert == 'u')
 		len += ft_unsigned_decimal(va_arg(args, unsigned int));
 	else if (convert == 'x')
@@ -34,9 +34,6 @@ static int	ft_convert_args(int convert, va_list args)
 		len += ft_putnbr(va_arg(args, int));
 	return (len);
 }
-
-// else if (convert == 'p')
-// 	len += ft_ptrhexa(va_arg(args, void *));
 
 static int	ft_parse(const char *format, va_list args)
 {

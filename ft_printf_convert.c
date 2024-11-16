@@ -6,14 +6,11 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:22:21 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/16 16:39:16 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:42:55 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdarg.h>
-
-#include <stdio.h>
 
 int	ft_puthexa_lowercase(unsigned int n)
 {
@@ -47,6 +44,23 @@ int	ft_putnbr_base(unsigned int nbr, char *base)
 	}
 	else
 		count += ft_putchar(base[nbr % len_base]);
+	return (count);
+}
+
+int	ft_ptrhexa(void *ptr)
+{
+	int				count;
+	unsigned long	address;
+
+	count = 0;
+	if (!ptr)
+		count += ft_putstr("(nil)");
+	else
+	{
+		address = (unsigned long) ptr;
+		count += write(1, "0x", 2);
+		count += ft_puthexa_lowercase(address);
+	}
 	return (count);
 }
 

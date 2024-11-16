@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:39:48 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/16 16:39:46 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:13:21 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		i += write(1, "(null)", 6);
 	while (str && str[i])
 	{
 		write(1, &str[i], 1);
