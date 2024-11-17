@@ -6,14 +6,14 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:22:21 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/16 22:09:28 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/17 17:25:08 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
 
-int	ft_puthexa_lowercase(unsigned int n)
+int	ft_puthexa_lowercase(unsigned long n)
 {
 	int	count;
 
@@ -31,9 +31,9 @@ int	ft_puthexa_uppercase(unsigned int n)
 	return (count);
 }
 
-int	ft_putnbr_base(unsigned int nbr, char *base)
+int	ft_putnbr_base(unsigned long nbr, char *base)
 {
-	unsigned int	len_base;
+	unsigned long	len_base;
 	int				count;
 
 	len_base = ft_strlen(base);
