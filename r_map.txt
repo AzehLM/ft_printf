@@ -148,3 +148,48 @@ NEXT STEP :
 - Definir un ordre de priorite dans le parsing
 - Faire en sorte que l'on puisse lire n FLAG
 - Reproduire les comportements des flags
+
+
+DEEP INSIDE PARSING :
+- check si format est "dixX"
+
+
+%d (décimal signé) :
+" " (espace) : ajoute un espace avant les nombres positifs
+"+" : force l'affichage du signe (+ ou -)
+Combinaison "+ " : "+" prend priorité sur l'espace
+
+%i (identique à d) :
+" " (espace) : ajoute un espace avant les nombres positifs
+"+" : force l'affichage du signe (+ ou -)
+Combinaison "+ " : "+" prend priorité sur l'espace
+
+x (hexadécimal minuscule) :
+"#" : ajoute "0x" avant le nombre
+
+X (hexadécimal majuscule) :
+"#" : ajoute "0X" avant le nombre
+
+En résumé :
+"#" fonctionne uniquement avec x et X
+" " (espace) fonctionne uniquement avec d et i
+"+" fonctionne uniquement avec d et i
+La combinaison des flags n'est possible que pour d et i avec "+ "
+
+
+
+
+
+format #####x  
+
+
+possibilites:
+
+if format[i] == % && format[i + 1] == #
+
+while format[i] != x || format[i] != X
+    i++;
+    ft_convert_args(format[i], args)
+
+
+
