@@ -6,12 +6,29 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:22:21 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/17 17:25:08 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:37:40 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
+
+static int	ft_putnbr_base(unsigned long nbr, char *base)
+{
+	unsigned long	len_base;
+	int				count;
+
+	len_base = ft_strlen(base);
+	count = 0;
+	if (nbr >= len_base)
+	{
+		count += ft_putnbr_base(nbr / len_base, base);
+		count += ft_putchar(base[nbr % len_base]);
+	}
+	else
+		count += ft_putchar(base[nbr % len_base]);
+	return (count);
+}
 
 int	ft_puthexa_lowercase(unsigned long n)
 {
@@ -28,23 +45,6 @@ int	ft_puthexa_uppercase(unsigned int n)
 
 	count = 0;
 	count += ft_putnbr_base(n, "0123456789ABCDEF");
-	return (count);
-}
-
-int	ft_putnbr_base(unsigned long nbr, char *base)
-{
-	unsigned long	len_base;
-	int				count;
-
-	len_base = ft_strlen(base);
-	count = 0;
-	if (nbr >= len_base)
-	{
-		count += ft_putnbr_base(nbr / len_base, base);
-		count += ft_putchar(base[nbr % len_base]);
-	}
-	else
-		count += ft_putchar(base[nbr % len_base]);
 	return (count);
 }
 
@@ -69,18 +69,18 @@ int	ft_unsigned_decimal(unsigned int n)
 {
 	unsigned long	ten_power;
 	unsigned int	nb;
-	int				i;
+	int				count;
 
 	ten_power = 1;
 	nb = n;
-	i = 0;
+	count = 0;
 	while (nb / (ten_power * 10) != 0)
 		ten_power *= 10;
 	while (ten_power != 0)
 	{
-		i += ft_putchar((nb / ten_power) + 48);
+		count += ft_putchar((nb / ten_power) + 48);
 		nb %= ten_power;
 		ten_power /= 10;
 	}
-	return (i);
+	return (count);
 }

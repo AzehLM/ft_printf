@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:39:48 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/16 22:07:10 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:38:10 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ char	*ft_strchr(const char *s, int c)
 
 int	ft_strlen(const char *s)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	while (s && s[i])
-		i++;
-	return (i);
+	count = 0;
+	while (s && s[count])
+		count++;
+	return (count);
 }
 
 int	ft_putchar(int c)
@@ -42,40 +42,40 @@ int	ft_putchar(int c)
 
 int	ft_putstr(char *str)
 {
-	int	i;
+	int	count;
 
-	i = 0;
+	count = 0;
 	if (!str)
-		i += write(1, "(null)", 6);
-	while (str && str[i])
+		count += write(1, "(null)", 6);
+	while (str && str[count])
 	{
-		write(1, &str[i], 1);
-		i++;
+		write(1, &str[count], 1);
+		count++;
 	}
-	return (i);
+	return (count);
 }
 
 int	ft_putnbr(int n)
 {
 	long	ten_power;
 	long	nb;
-	int		i;
+	int		count;
 
 	ten_power = 1;
 	nb = n;
-	i = 0;
+	count = 0;
 	if (nb < 0)
 	{
 		nb = nb * -1;
-		i += ft_putchar('-');
+		count += ft_putchar('-');
 	}
 	while (nb / (ten_power * 10) != 0)
 		ten_power *= 10;
 	while (ten_power != 0)
 	{
-		i += ft_putchar((nb / ten_power) + 48);
+		count += ft_putchar((nb / ten_power) + 48);
 		nb %= ten_power;
 		ten_power /= 10;
 	}
-	return (i);
+	return (count);
 }

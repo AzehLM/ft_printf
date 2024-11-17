@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 07:34:07 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/17 17:25:13 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:35:19 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		ft_ptrhexa(void *ptr);
 int		ft_putchar(int c);
 int		ft_puthexa_lowercase(unsigned long n);
 int		ft_puthexa_uppercase(unsigned int n);
-int		ft_putnbr_base(unsigned long nbr, char *base);
 int		ft_putnbr(int n);
 int		ft_putstr(char *str);
 int		ft_strlen(const char *s);
