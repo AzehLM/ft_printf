@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:15:18 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/17 16:42:40 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:32:19 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static int	ft_parse(const char *format, va_list args)
 	int	i;
 	int	len;
 
+	if (!format)
+		return (-1);
 	i = 0;
 	len = 0;
 	while (format && format[i])
