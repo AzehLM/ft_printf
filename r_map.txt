@@ -1,12 +1,12 @@
 PARTIE SANS BONUS:
 
-1 -printf va ecrire char par char de la chaine en parametres jusqua ce quelle trouve un %
+1 - printf va ecrire char par char la chaine en parametres jusqu'a ce quelle trouve un %
 
-2 - si un % est trouve, check %+1 qui sera le type du premier argument de la variable
+2 - si un % est trouve, check % + 1 qui sera le type du premier argument de la variable
 
 3 - selon ce quil y a apres le %, different type de conversion
 
-4 - une fois ecrit on avance dans le chaine en parametre et on ecrit encore jusqua trouver un autre % ou que la chaine soit terminee '\0'
+4 - une fois ecrit on avance dans le chaine en parametre et on ecrit encore jusqua trouver un autre % ou que la chaine soit terminée '\0'
 
 5 - printf return le nombre total de char affiches.
 
@@ -105,7 +105,7 @@ TEST FOR %X : FF
 
 TEST AND EXEMPLES FOR BONUS PART :
 
-    // Le flag '#' force l'affichage du préfixe 0x pour hexa, 0 pour octal
+    // Le flag '#' force l'affichage du préfixe 0x pour hexa
     printf("Hexadécimal avec #: %#x\n", 255);    // Affiche: 0xff
     printf("Hexadécimal sans #: %x\n", 255);     // Affiche: ff
 
@@ -133,14 +133,17 @@ Il peut y avoir une multitude de # devant un parametre, cela n'affecte pas le no
 
 FLAG ' ' :
 
-Pour les convertions de type signed (int), un espace est mis devant la valeur numerique du retour de %i et %d si la valeur est positive, pas d'ajout si la valeur est negative.
+Pour les convertions de type signed (int), un espace est mit devant la valeur numerique 
+du retour de %i et %d si la valeur est positive, pas d'ajout si la valeur est negative.
 L'objectif est de laisser une 'place' pour le signe + ou - si besoin.
 D'ou le fait que le FLAG + prenne le dessus sur lespace si les deux sont mis ensemble. (voir next flag)
 
 FLAG '+' :
 
-Fais en sorte que le signe de la value affichee a lutilisation de printf soit afficher avant le nombre. Par defaut, seulement le signe - est affiche (voir Mandatory part).
-Si un '+' et un ' ' sont combiner, le + prend le dessus. (erreur compilation de toute facon, les deux flags ne peuvent etre utilise ensemble)
+Fais en sorte que le signe de la value affichee a lutilisation de printf soit afficher avant le nombre. 
+Par defaut, seulement le signe - est affiche (voir Mandatory part).
+Si un '+' et un ' ' sont combiner, le + prend le dessus. 
+(erreur compilation de toute facon, les deux flags ne peuvent etre utilise ensemble)
 
 
 NEXT STEP : 
@@ -177,9 +180,6 @@ En résumé :
 La combinaison des flags n'est possible que pour d et i avec "+ "
 
 
-
-
-
 format #####x  
 
 
@@ -191,5 +191,18 @@ while format[i] != x || format[i] != X
     i++;
     ft_convert_args(format[i], args)
 
+
+Gestion des FLAGS bonus avec une structure :
+- Creation d'une structure composé de booléens pour chaque FLAG voulant etre testé :
+
+typedef struct	s_list
+{
+	bool	flag1;
+	bool	flag2;
+	bool	flagx...;
+}	t_bool;
+
+- La suite du parsing est simple, a chaque flag rencontré 
+  on set le booléen a TRUE jusqu'à ce que l'on tombe sur un identifieur.
 
 
