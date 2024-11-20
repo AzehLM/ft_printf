@@ -6,7 +6,7 @@
 // /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 // /*                                                +#+#+#+#+#+   +#+           */
 // /*   Created: 2024/11/17 20:42:47 by gueberso          #+#    #+#             */
-// /*   Updated: 2024/11/18 12:13:44 by gueberso         ###   ########.fr       */
+// /*   Updated: 2024/11/19 11:43:30 by gueberso         ###   ########.fr       */
 // /*                                                                            */
 // /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 // 	while (format[i])
 // 	{
 // 		if (format_identifier("dixX", &format[i]))
+// 			i++; //REMOTE THAT (ERROR MANAGEMENT)
 // 	}
 // }
 
