@@ -53,45 +53,45 @@ static int	ft_parsing_flag(const char *format, int *index, va_list args)
 	while (strchr("# +", format[*index]))
 	{
 		if (format[*index]== '#')
-			flags->hash = true;
+			flags.hash = true;
 		else if (format[*index] == ' ')
-			flags->space = true;
+			flags.space = true;
 		else if (format[*index] == '+')
-			flags->sign = true;
+			flags.sign = true;
 		(*index)++;
 	}
-	if (ft_strchr("dixX", format[i]))
-		count = ft_flags_management(format[i], flags, args);
+	if (ft_strchr("dixX", format[*index]))
+		count = ft_flags_management(format[*index], flags, args);
 
 	return (count);
 }
 
 static int	ft_parse(const char *format, va_list args)
 {
-	int	i;
+	int	index;
 	int	len;
 
 	if (!format)
 		return (-1);
-	i = 0;
+	index = 0;
 	len = 0;
-	while (format && format[i])
+	while (format && format[index])
 	{
-		if (format[i] == '%' && format[i + 1])
+		if (format[index] == '%' && format[index + 1])
 		{
-			i++;
-			if (ft_strchr("# +", format[i]));
-				len += ft_parsing_flag(&format[i], &i, args);
-			if (ft_strchr("cspdiuxX", format[i]))
-				len += ft_convert_args(format[i], args);
-			else if (format[i] == '%')
+			index++;
+			if (ft_strchr("# +", format[index]))
+				len += ft_parsing_flag(&format[index], &index, args);
+			if (ft_strchr("cspdiuxX", format[index]))
+				len += ft_convert_args(format[index], args);
+			else if (format[index] == '%')
 				len += ft_putchar('%');
 		}
-		else if (format[i] == '%' && !format[i + 1])
+		else if (format[index] == '%' && !format[index + 1])
 			return (-1);
 		else
-			len += ft_putchar(format[i]);
-		i++;
+			len += ft_putchar(format[index]);
+		index++;
 	}
 	return (len);
 }
