@@ -1,14 +1,14 @@
-// // /* ************************************************************************** */
-// // /*                                                                            */
-// // /*                                                        :::      ::::::::   */
-// // /*   ft_printf_bonus_part1.c                            :+:      :+:    :+:   */
-// // /*                                                    +:+ +:+         +:+     */
-// // /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
-// // /*                                                +#+#+#+#+#+   +#+           */
-// // /*   Created: 2024/11/17 20:42:47 by gueberso          #+#    #+#             */
-// // /*   Updated: 2024/11/19 11:43:30 by gueberso         ###   ########.fr       */
-// // /*                                                                            */
-// // /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_bonus_part1.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/17 20:42:47 by gueberso          #+#    #+#             */
+/*   Updated: 2024/11/21 15:37:27 by gueberso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include <stdarg.h>
@@ -37,13 +37,13 @@ static int	ft_convert_args(int convert, t_flags flags, va_list args)
 
 static int	ft_parsing_flag(const char *format, int *index, va_list args)
 {
-	int	count;
+	int		count;
 	t_flags	flags;
 
 	flags = (t_flags){false};
 	while (strchr("# +", format[*index]))
 	{
-		if (format[*index]== '#')
+		if (format[*index] == '#')
 			flags.hash = true;
 		else if (format[*index] == ' ')
 			flags.space = true;
@@ -60,8 +60,8 @@ static int	ft_parsing_flag(const char *format, int *index, va_list args)
 
 static int	ft_parse(const char *format, va_list args)
 {
-	int	index;
-	int	len;
+	int		index;
+	int		len;
 	t_flags flags;
 
 	if (!format)
