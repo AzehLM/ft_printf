@@ -31,14 +31,14 @@ on return len (return value de printf)
 fonction de print de format :
 prend la string en param et la structure va_list
 
-cette fonction parcours la chaine de format 
-et traite les differents type de conversion rencontres, 
+cette fonction parcours la chaine de format
+et traite les differents type de conversion rencontres,
 si un % est rencontre :
-- on check % + 1 avec strchr et la liste des 
+- on check % + 1 avec strchr et la liste des
 parametres que lont veut check
 
--- si on en trouve un on donne a une autre 
-fonction la position et la struct qui identifiera 
+-- si on en trouve un on donne a une autre
+fonction la position et la struct qui identifiera
 largument et le traitera (ft_convert_args)
 
 - sinon si on a eu 2 %% daffiler on affiche %
@@ -53,13 +53,13 @@ strchr : classique, au choix reprendre celle de la lib ou en faire une custom.
 
 
 ---
-fonction didentification de format, elle prend en parametre 
+fonction didentification de format, elle prend en parametre
 le type a convertir (convert), et la struc arguments :
-dans cette fonction on declare un counteur qui 
+dans cette fonction on declare un counteur qui
 sera return et est le nombre de char afficher sur la stdout
 
-les types que je dois gerer avec les values 
-que jenvoie a chaque fonction de conversion 
+les types que je dois gerer avec les values
+que jenvoie a chaque fonction de conversion
 en utilisant va_arg(arguments, type);
 
 'c' == int; == putchar
@@ -92,7 +92,7 @@ pour pointeur nill return '(nill)';
 
 RETURN printf:
 
-TEST FOR %c : int a = 'a' : a || char b = 'a' : a 
+TEST FOR %c : int a = 'a' : a || char b = 'a' : a
 TEST FOR %s : string
 TEST FOR %p : 0x7ffccdb9d468
 TEST FOR %d : 42
@@ -133,20 +133,20 @@ Il peut y avoir une multitude de # devant un parametre, cela n'affecte pas le no
 
 FLAG ' ' :
 
-Pour les convertions de type signed (int), un espace est mit devant la valeur numerique 
+Pour les convertions de type signed (int), un espace est mit devant la valeur numerique
 du retour de %i et %d si la valeur est positive, pas d'ajout si la valeur est negative.
 L'objectif est de laisser une 'place' pour le signe + ou - si besoin.
 D'ou le fait que le FLAG + prenne le dessus sur lespace si les deux sont mis ensemble. (voir next flag)
 
 FLAG '+' :
 
-Fais en sorte que le signe de la value affichee a lutilisation de printf soit afficher avant le nombre. 
+Fais en sorte que le signe de la value affichee a lutilisation de printf soit afficher avant le nombre.
 Par defaut, seulement le signe - est affiche (voir Mandatory part).
-Si un '+' et un ' ' sont combiner, le + prend le dessus. 
+Si un '+' et un ' ' sont combiner, le + prend le dessus.
 (erreur compilation de toute facon, les deux flags ne peuvent etre utilise ensemble)
 
 
-NEXT STEP : 
+NEXT STEP :
 
 - Definir un ordre de priorite dans le parsing
 - Faire en sorte que l'on puisse lire n FLAG
@@ -180,7 +180,7 @@ En résumé :
 La combinaison des flags n'est possible que pour d et i avec "+ "
 
 
-format #####x  
+format #####x
 
 
 possibilites:
@@ -202,8 +202,13 @@ typedef struct	s_list
 	bool	flagx...;
 }	t_bool;
 
-- La suite du parsing est simple, a chaque flag rencontré 
+- La suite du parsing est simple, a chaque flag rencontré
   on set le booléen a TRUE jusqu'à ce que l'on tombe sur un identifieur.
 - traitement de l'identifieur en fonction des flags
-- reset des booléens a 0 
+- reset des booléens a 0
 
+
+
+/!\   /!\   /!\   /!\   /!\
+Lors d'un check de flag, s'assurer qu'il y ai un identifieur a la suite:
+Si ce n'est pas le cas, printf return -1, peu importe le cas
