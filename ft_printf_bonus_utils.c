@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:59:30 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/21 17:43:58 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/21 18:46:31 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,14 @@ int	ft_putnbr_bonus(int n, t_flags flags)
 	nb = n;
 	count = 0;
 	printf("flags.sign value = %d\n", flags.sign);
-	if (flags.sign == true && n >= 0)
-		count += ft_putchar('+');
-	else if (flags.space == true && flags.sign == false && n >= 0)
-		count += ft_putchar(' ');
+
+	if (n >= 0)
+	{
+		if (flags.sign)
+			count += ft_putchar('+');
+		else if (flags.space && !flags.sign)
+			count += ft_putchar(' ');
+	}
 	if (nb < 0)
 	{
 		nb = nb * -1;

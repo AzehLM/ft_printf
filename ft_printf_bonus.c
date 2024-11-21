@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 20:42:47 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/21 17:46:17 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/21 18:42:20 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,24 @@ static int	ft_convert_args(int convert, t_flags flags, va_list args)
 }
 
 static int	ft_parsing_flag(const char *format, int *index,
-	t_flags flags, va_list args)
+	t_flags *flags, va_list args)
 {
 	int		count;
-	
+
 	count = 0;
-	flags = (t_flags){false};
+	*flags = (t_flags){false};
 	while (ft_strchr("# +", format[*index]))
 	{
 		if (format[*index] == '#')
-			flags.hash = true;
+			flags->hash = true;
 		else if (format[*index] == ' ')
-			flags.space = true;
+			flags->space = true;
 		else if (format[*index] == '+')
-			flags.sign = true;
+			flags->sign = true;
 		(*index)++;
 	}
 	if (ft_strchr("cspdiuxX", format[*index]))
-		count += ft_convert_args(format[*index], flags, args);
+		count += ft_convert_args(format[*index], *flags, args);
 	return (count);
 }
 
@@ -72,7 +72,7 @@ static int	ft_parse(const char *format, va_list args)
 		{
 			index++;
 			if (ft_strchr("# +", format[index]))
-				len += ft_parsing_flag(&format[index], &index, flags, args);
+				len += ft_parsing_flag(&format[index], &index, &flags, args);
 			else if (ft_strchr("cspdiuxX", format[index]))
 				len += ft_convert_args(format[index], flags, args);
 			else if (format[index] == '%')

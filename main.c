@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 20:53:36 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/21 17:38:55 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/21 18:45:46 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ void    temporary_test(void)
 {
     int res = 0;
 
-    res = (ft_printf("%+d", 42));
+    res = (ft_printf("%+d%#x", 42, 255));
     printf("\n%d", res);
 }
 int    main()
