@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:46:45 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/21 15:26:25 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/21 17:26:51 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_ptrhexa(void *ptr)
 	else
 	{
 		address = (unsigned long) ptr;
-		count += write(1, "0x", 2);
+		count += ft_putstr("0x"); //(1, "0x", 2);
 		count += ft_puthexa_lowercase(address);
 	}
 	return (count);
