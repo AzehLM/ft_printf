@@ -6,10 +6,11 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:59:30 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/21 14:59:31 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:14:46 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf_bonus.h"
 #include <unistd.h>
 
 char	*ft_strchr(const char *s, int c)
@@ -55,7 +56,7 @@ int	ft_putstr(char *str)
 	return (count);
 }
 
-int	ft_putnbr(int n)
+int	ft_putnbr(int n, t_flags flags)
 {
 	long	ten_power;
 	long	nb;
@@ -64,6 +65,10 @@ int	ft_putnbr(int n)
 	ten_power = 1;
 	nb = n;
 	count = 0;
+	if (flags.sign == true && n >= 0)
+		count += ft_putchar('+');
+	else if (flags.space == true && flags.sign == false && n >= 0)
+		count += ft_putchar(' ');
 	if (nb < 0)
 	{
 		nb = nb * -1;

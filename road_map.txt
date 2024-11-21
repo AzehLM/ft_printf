@@ -177,7 +177,8 @@ En résumé :
 "#" fonctionne uniquement avec x et X
 " " (espace) fonctionne uniquement avec d et i
 "+" fonctionne uniquement avec d et i
-La combinaison des flags n'est possible que pour d et i avec "+ "
+La combinaison des flags n'est possible que pour d et i 
+avec "+ " et d (ou i) positif
 
 
 format #####x
