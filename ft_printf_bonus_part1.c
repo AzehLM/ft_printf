@@ -13,6 +13,28 @@
 #include "ft_printf_bonus.h"
 #include <stdarg.h>
 
+static int	ft_convert_args(int convert, t_flags flags, va_list args)
+{
+	int	len;
+
+	len = 0;
+	if (convert == 'c')
+		len += ft_putchar(va_arg(args, int));
+	else if (convert == 's')
+		len += ft_putstr(va_arg(args, char *));
+	else if (convert == 'p')
+		len += ft_ptrhexa(va_arg(args, void *));
+	else if (convert == 'u')
+		len += ft_unsigned_decimal(va_arg(args, unsigned int));
+	else if (convert == 'x')
+		len += ft_puthexa_lowercase(va_arg(args, unsigned int), flags);
+	else if (convert == 'X')
+		len += ft_puthexa_uppercase(va_arg(args, unsigned int), flags);
+	else if (convert == 'd' || convert == 'i')
+		len += ft_putnbr(va_arg(args, int), flags);
+	return (len);
+}
+
 static int	ft_parsing_flag(const char *format, int *index, va_list args)
 {
 	int	count;
@@ -30,8 +52,9 @@ static int	ft_parsing_flag(const char *format, int *index, va_list args)
 		(*index)++;
 	}
 	if (ft_strchr("dixX", format[*index]))
-		count = ft_flags_management(format[*index], flags, args);
-
+		count = ft_convert_args(format[*index], flags, args);
+	if (ft_strchr("cspdiuxX", format[*index]))
+		count += ft_convert_args(format[*index], flags, args);
 	return (count);
 }
 
@@ -39,6 +62,7 @@ static int	ft_parse(const char *format, va_list args)
 {
 	int	index;
 	int	len;
+	t_flags flags;
 
 	if (!format)
 		return (-1);
@@ -51,8 +75,8 @@ static int	ft_parse(const char *format, va_list args)
 			index++;
 			if (ft_strchr("# +", format[index]))
 				len += ft_parsing_flag(&format[index], &index, args);
-			if (ft_strchr("cspdiuxX", format[index]))
-				len += ft_convert_args(format[index], args);
+			else if (ft_strchr("cspdiuxX", format[index]))
+				len += ft_convert_args(format[index], flags, args);
 			else if (format[index] == '%')
 				len += ft_putchar('%');
 		}

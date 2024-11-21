@@ -6,14 +6,14 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:46:45 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/21 15:09:34 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:26:25 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include <unistd.h>
 
-static int	ft_putnbr_base(unsigned long nbr, char *base)
+int	ft_putnbr_base(unsigned long nbr, char *base)
 {
 	unsigned long	len_base;
 	int				count;
