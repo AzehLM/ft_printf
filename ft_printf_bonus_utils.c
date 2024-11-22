@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:59:30 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/21 18:46:31 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/22 00:15:01 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	ft_putnbr_bonus(int n, t_flags flags)
 	ten_power = 1;
 	nb = n;
 	count = 0;
-	printf("flags.sign value = %d\n", flags.sign);
 
 	if (n >= 0)
 	{

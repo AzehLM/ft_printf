@@ -1,6 +1,10 @@
 NAME	:= libftprintf.a
 
 SRCS	:= \
+	ft_printf_bonus_part2.c \
+	ft_printf_bonus_part3.c \
+	ft_printf_bonus_utils.c \
+	ft_printf_bonus.c \
 	ft_printf_convert.c \
 	ft_printf_utils.c \
 	ft_printf.c \
@@ -34,6 +38,8 @@ $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 
 $(BUILD_DIR):
 	@$(DIR_DUP)
+
+bonus: $(NAME)
 
 clean:
 	@$(RM) $(OBJS) $(DEPS)
