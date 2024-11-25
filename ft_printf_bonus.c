@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 20:42:47 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/22 00:31:26 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:43:51 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,13 @@ static int	ft_convert_args(int convert, t_flags flags, va_list args)
 	else if (convert == 'X')
 		len += ft_puthexa_uppercase_bonus(va_arg(args, unsigned int), flags);
 	else if (convert == 'd' || convert == 'i')
-		len += ft_putnbr_bonus(va_arg(args, int), flags);
+		len += ft_putnbr_bonus(va_arg(args, int), flags, 1, 0);
 	return (len);
 }
 
-static void	ft_init_flags(t_flags *flags)
+static int	ft_parse_flags(const char *format, int *index, t_flags *flags)
 {
-	flags->hash = false;
-	flags->space = false;
-	flags->sign = false;
-}
-
-static int ft_parse_flags(const char *format, int *index, t_flags *flags)
-{
-	ft_init_flags(flags);
+	*flags = (t_flags){false};
 	while (format[*index] && ft_strchr("# +", format[*index]))
 	{
 		if (format[*index] == '#')
@@ -54,8 +47,8 @@ static int ft_parse_flags(const char *format, int *index, t_flags *flags)
 		else if (format[*index] == '+')
 			flags->sign = true;
 		(*index)++;
-    }
-    return (0);
+	}
+	return (0);
 }
 
 static int	ft_parse(const char *format, va_list args)
@@ -69,19 +62,19 @@ static int	ft_parse(const char *format, va_list args)
 	while (format && format[index])
 	{
 		if (format[index] == '%' && format[index + 1])
-        {
-            index++;
-            ft_parse_flags(format, &index, &flags);
-            if (ft_strchr("cspdiuxX", format[index]))
-                len += ft_convert_args(format[index], flags, args);
-            else if (format[index] == '%')
-                len += ft_putchar('%');
-        }
-        else if (format[index] == '%' && !format[index + 1])
-            return (-1);
-        else
-            len += ft_putchar(format[index]);
-        index++;
+		{
+			index++;
+			ft_parse_flags(format, &index, &flags);
+			if (ft_strchr("cspdiuxX", format[index]))
+				len += ft_convert_args(format[index], flags, args);
+			else if (format[index] == '%')
+				len += ft_putchar('%');
+		}
+		else if (format[index] == '%' && !format[index + 1])
+			return (-1);
+		else
+			len += ft_putchar(format[index]);
+		index++;
 	}
 	return (len);
 }

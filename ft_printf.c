@@ -6,14 +6,14 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:15:18 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/22 00:31:48 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:16:07 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdarg.h>
 
-static int	ft_convert_args(int convert, va_list args) // to do : rename convert to identifier
+static int	ft_convert_args(int convert, va_list args)
 {
 	int	len;
 
@@ -35,7 +35,7 @@ static int	ft_convert_args(int convert, va_list args) // to do : rename convert 
 	return (len);
 }
 
-static int	ft_parse(const char *format, va_list args) 
+static int	ft_parse(const char *format, va_list args)
 {
 	int	i;
 	int	len;

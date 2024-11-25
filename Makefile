@@ -1,17 +1,23 @@
 NAME	:= libftprintf.a
 
 SRCS	:= \
-	ft_printf_bonus_part2.c \
-	ft_printf_bonus_part3.c \
-	ft_printf_bonus_utils.c \
-	ft_printf_bonus.c \
 	ft_printf_convert.c \
 	ft_printf_utils.c \
 	ft_printf.c \
 
+SRCSB	:= \
+	ft_printf_bonus.c \
+	ft_printf_convert_bonus.c \
+	ft_printf_utils_bonus.c \
+	ft_printf_utils2_bonus.c \
+
 BUILD_DIR	:= .build
 OBJS		:= $(SRCS:%.c=$(BUILD_DIR)/%.o)
+OBJSB		:= $(SRCSB:%.c=$(BUILD_DIR)/%.o)
 DEPS		:= $(OBJS:.o=.d)
+DEPSB		:= $(OBJSB:.o=.d)
+
+# ********** FLAGS AND COMPILATION FLAGS ************************************* #
 
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror -g3
@@ -26,27 +32,50 @@ DIR_DUP		= mkdir -p $(BUILD_DIR)
 
 .DEFAULT_GOAL	:= all
 
--include $(DEPS)
+# ********** RULES *********************************************************** #
 
+-include $(DEPS)
+-include $(DEPSB)
+
+.PHONY: all
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	@echo "$(GREEN_BOLD)✓ $(NAME) is ready$(RESETC)"
 
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+	@echo "$(CYAN)[Compiling]$(RESETC) $<"
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 $(BUILD_DIR):
 	@$(DIR_DUP)
 
-bonus: $(NAME)
+.PHONY: bonus
+bonus: .bonus
 
+.bonus: $(OBJSB) $(OBJS)
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJSB) $(OBJS)
+	@echo "$(GREEN_BOLD)✓ $(NAME) made with bonuses$(RESETC)"
+	@touch .bonus
+
+.PHONY: clean
 clean:
-	@$(RM) $(OBJS) $(DEPS)
+	@$(RM) $(OBJS) $(DEPS) $(OBJSB) $(DEPSB) .bonus
+	@echo "$(RED_BOLD)[Cleaning]$(RESETC)"
 
+.PHONY: fclean
 fclean: clean
 	@$(RM) $(RMDIR) $(NAME) $(BUILD_DIR)
+	@echo "$(RED_BOLD)✓ project is fully cleaned!$(RESETC)"
 
+.PHONY: re
 re: fclean all
 
-.PHONY: all fclean re bonus
+# ********** COLORS AND BACKGROUND COLORS ************************************ #
+
+RESETC				:=	\033[0m
+
+GREEN_BOLD			:=	\033[1;32m
+RED_BOLD			:=	\033[1;31m
+CYAN				:=	\033[0;36m
