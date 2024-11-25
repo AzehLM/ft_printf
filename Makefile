@@ -41,6 +41,7 @@ DIR_DUP		= mkdir -p $(BUILD_DIR)
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	@$(RM) $(NAME)
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	@echo "$(GREEN_BOLD)✓ $(NAME) is ready$(RESETC)"
 
@@ -51,12 +52,12 @@ $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 $(BUILD_DIR):
 	@$(DIR_DUP)
 
-.PHONY: bonus
 bonus: .bonus
 
-.bonus: $(OBJSB) $(OBJS)
-	@$(AR) $(ARFLAGS) $(NAME) $(OBJSB) $(OBJS)
-	@echo "$(GREEN_BOLD)✓ $(NAME) made with bonuses$(RESETC)"
+.bonus: $(OBJSB)
+	@$(RM) $(NAME)
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJSB)
+	@echo "$(GREEN_BOLD)✓ $(NAME) made with bonus files$(RESETC)"
 	@touch .bonus
 
 .PHONY: clean
