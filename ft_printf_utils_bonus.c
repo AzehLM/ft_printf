@@ -6,12 +6,11 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:59:30 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/25 14:48:21 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:02:09 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
-#include <unistd.h>
 
 char	*ft_strchr(const char *s, int c)
 {
