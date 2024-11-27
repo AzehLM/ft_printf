@@ -1,4 +1,4 @@
-# Second 42cursus I made
+# Second 42cursus project I made
 
 Didn't bother doing every bonuses.
 
