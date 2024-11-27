@@ -11,9 +11,9 @@ SRCSB	:= \
 	ft_printf_utils_bonus.c \
 	ft_printf_utils2_bonus.c \
 
-BUILD_DIR	:= .build
-OBJS		:= $(SRCS:%.c=$(BUILD_DIR)/%.o)
-OBJSB		:= $(SRCSB:%.c=$(BUILD_DIR)/%.o)
+BUILD_DIR	:= .build/
+OBJS		:= $(SRCS:%.c=$(BUILD_DIR)%.o)
+OBJSB		:= $(SRCSB:%.c=$(BUILD_DIR)%.o)
 DEPS		:= $(OBJS:.o=.d)
 DEPSB		:= $(OBJSB:.o=.d)
 
@@ -45,13 +45,14 @@ $(NAME): $(OBJS)
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	@echo "$(GREEN_BOLD)✓ $(NAME) is ready$(RESETC)"
 
-$(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
+$(BUILD_DIR)%.o: %.c | $(BUILD_DIR)
 	@echo "$(CYAN)[Compiling]$(RESETC) $<"
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 $(BUILD_DIR):
 	@$(DIR_DUP)
 
+.PHONY: bonus
 bonus: .bonus
 
 .bonus: $(OBJSB)

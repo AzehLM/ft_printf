@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:46:45 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/25 15:02:47 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:29:37 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_puthexa_lowercase_bonus(unsigned long n, t_flags flags)
 	int	count;
 
 	count = 0;
-	if (flags.hash == true)
+	if (flags.hash == true && n != 0)
 		count += ft_putstr("0x");
 	count += ft_putnbr_base(n, "0123456789abcdef");
 	return (count);
@@ -45,7 +45,7 @@ int	ft_puthexa_uppercase_bonus(unsigned int n, t_flags flags)
 	int	count;
 
 	count = 0;
-	if (flags.hash == true)
+	if (flags.hash == true && n != 0)
 		count += ft_putstr("0X");
 	count += ft_putnbr_base(n, "0123456789ABCDEF");
 	return (count);
